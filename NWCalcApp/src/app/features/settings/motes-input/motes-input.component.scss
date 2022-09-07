@@ -1,0 +1,21 @@
+.motes-card-container {
+  height: calc(100% - 2*var(--content-padding-for-router-outlets) - var(--main-toolbar-height));
+  width: calc(100% - 2*var(--content-padding-for-router-outlets) - var(--main-toolbar-height));
+  // height: 95%;
+}
+
+.motes-card-content {
+  flex-direction: row;
+  display: flex;
+}
+
+.formular {
+  flex: 1;
+  min-height: 800px;
+}
+
+.motes-img {
+  flex: 1;
+  background-image: url(../../../../assets/images/Dragonglory.png);
+  background-size: 100% 100%;
+}

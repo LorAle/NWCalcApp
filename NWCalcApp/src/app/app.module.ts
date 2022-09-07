@@ -5,8 +5,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSliderModule } from '@angular/material/slider';
-import { DashboardModule } from './Features/dashboard/dashboard.module';
-import { CoreModule } from './Core/core.module';
+import { DashboardModule } from './features/dashboard/dashboard.module';
+import { CoreModule } from './core/core.module';
 
 @NgModule({
   declarations: [
