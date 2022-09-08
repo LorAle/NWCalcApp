@@ -1,18 +1,21 @@
-<mat-card class="motes-card-container">
-  <mat-card-subtitle>Motes</mat-card-subtitle>
-  <mat-card-title>Mote Price Data</mat-card-title>
-  <mat-card-content class="motes-card-content">
-    <div class="formular">
-      <nwcalc-motes-formular></nwcalc-motes-formular>
-    </div>
-    <div class="motes-img"></div>
-  </mat-card-content>
-  <mat-divider inset></mat-divider>
-  <mat-card-actions>
-    <button mat-button>LIKE</button>
-    <button mat-button>SHARE</button>
-  </mat-card-actions>
-  <mat-card-footer>
-    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
-  </mat-card-footer>
-</mat-card>
+<div class="motes-input-container">
+  <mat-card class="motes-card-container" *ngFor="let mote of motes; let i = index">
+    <mat-card-header>
+      <div mat-card-avatar class="motes-img" [ngStyle]="{'background-image': mote.imageURL}"></div>
+      <mat-card-title>{{mote.name}}</mat-card-title>
+      <mat-card-subtitle>Price Data</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content class="motes-card-content">
+      <nwcalc-motes-formular [(moteModel)]="motes[i]"></nwcalc-motes-formular>
+    </mat-card-content>
+    <!-- <mat-divider inset></mat-divider> -->
+    <!-- <mat-card-actions>
+      <button mat-button>LIKE</button>
+      <button mat-button>SHARE</button>
+    </mat-card-actions> -->
+    <!-- <mat-card-footer>
+      <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+    </mat-card-footer> -->
+  </mat-card>
+
+</div>

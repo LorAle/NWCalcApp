@@ -1,4 +1,5 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { GetItemTypesMap, ItemType } from 'src/app/models/item';
 import { Mote, MoteType } from '../../../models/mote';
 
 @Component({
@@ -9,21 +10,28 @@ import { Mote, MoteType } from '../../../models/mote';
 })
 export class MotesFormularComponent implements OnInit {
 
-  motetypes = Array.from(Mote.GetMoteTypesMap());
+  @Input()  moteModel: Mote = new Mote();
+  @Output() moteModelChange = new EventEmitter<Mote>();
+  // https://stackoverflow.com/questions/71483441/angular-12-two-way-binding-gives-error-the-property-and-event-halves-of-the-t
+  moteTypes: [MoteType, string][] = Array.from(Mote.GetMoteTypesMap());
+  itemTypes: [ItemType, string][] = Array.from(GetItemTypesMap());
 
-  model = new Mote(MoteType.Death, MoteType.Death, 124, 135);
-
+  model: Mote = new Mote();
   submitted = false;
 
   constructor() { }
 
-  onSubmit() { this.submitted = true; }
+  onSubmit() {
+    this.submitted = true;
+    this.moteModelChange.emit(this.model);
+  }
 
-  newHero() {
-    this.model = new Mote(MoteType.Air, MoteType.Air, 0, 0);
+  reset() {
+    this.model = new Mote();
   }
 
   ngOnInit(): void {
+    this.model = this.moteModel;
   }
 
 }

@@ -1,28 +1,36 @@
 <div class="motes-form-container">
   <div [hidden]="submitted">
     <form (ngSubmit)="onSubmit()" #heroForm="ngForm">
-      <div class="form-group">
+      <!-- <div class="form-group">
         <label class="form-label" for="name">Name</label>
-        <input type="text" class="form-control" id="name"
+        <input type="text" class="form-control" id="name" disabled="true"
                required
                [(ngModel)]="model.name" name="name"
                #name="ngModel">
-        <div [hidden]="name.valid || name.pristine"
-             class="alert alert-danger">
-          Name is required
-        </div>
-      </div>
+      </div> -->
 
       <div class="form-group">
-        <label class="form-label" for="type">Mote Type</label>
-        <select class="form-control" id="type"
+        <label class="form-label" for="itemType">Item Type</label>
+        <select class="form-control" id="itemType"
                 required
-                [(ngModel)]="model.type" name="type"
+                [(ngModel)]="model.itemType" name="itemType"
+                #itemType="ngModel">
+          <option *ngFor="let itemType of itemTypes" [value]="itemType">{{itemType}}</option>
+        </select>
+        <div [hidden]="itemType.valid || itemType.pristine" class="alert alert-danger">
+          Itemtype is required
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="moteType">Motetype</label>
+        <select class="form-control" id="moteType"
+                required
+                [(ngModel)]="model.moteType" name="moteType"
                 #type="ngModel">
-          <option *ngFor="let motetype of motetypes" [value]="motetype">{{motetype}}</option>
+          <option *ngFor="let moteType of moteTypes" [value]="moteType">{{moteType}}</option>
         </select>
         <div [hidden]="type.valid || type.pristine" class="alert alert-danger">
-          Type is required
+          Motetype is required
         </div>
       </div>
 
@@ -30,9 +38,9 @@
         <label class="form-label" for="mps">Min Price Sell</label>
         <input type="text" class="form-control" id="mps"
                required
-               [(ngModel)]="model.min_sell_order" name="mps"
+               [(ngModel)]="model.minSellOrder" name="mps"
                #mps="ngModel">
-        <div [hidden]="name.valid || name.pristine"
+        <div [hidden]="mps.valid || mps.pristine"
              class="alert alert-danger">
             Min Price Sell is required
         </div>
@@ -42,16 +50,16 @@
         <label class="form-label" for="mpb">Max Price Buy</label>
         <input type="text" class="form-control" id="mpb"
                required
-               [(ngModel)]="model.max_buy_order" name="mpb"
+               [(ngModel)]="model.maxBuyOrder" name="mpb"
                #mpb="ngModel">
-        <div [hidden]="name.valid || name.pristine"
+        <div [hidden]="mpb.valid || mpb.pristine"
              class="alert alert-danger">
             Max Price Buy is required
         </div>
       </div>
 
       <button type="submit" class="btn btn-success" [disabled]="!heroForm.form.valid">Submit</button>
-      <button type="button" class="btn btn-default" (click)="newHero(); heroForm.reset()">New Hero</button>
+      <button type="button" class="btn btn-default" (click)="reset(); heroForm.reset()">Reset</button>
     </form>
   </div>
 
@@ -63,15 +71,15 @@
     </div>
     <div class="row">
       <div class="col-xs-3">Type</div>
-      <div class="col-xs-9">{{ model.type }}</div>
+      <div class="col-xs-9">{{ model.moteType }}</div>
     </div>
     <div class="row">
       <div class="col-xs-3">Min Price Sell</div>
-      <div class="col-xs-9">{{ model.min_sell_order }}</div>
+      <div class="col-xs-9">{{ model.minSellOrder }}</div>
     </div>
     <div class="row">
       <div class="col-xs-3">Max Price Buy</div>
-      <div class="col-xs-9">{{ model.max_buy_order }}</div>
+      <div class="col-xs-9">{{ model.maxBuyOrder }}</div>
     </div>
     <br>
     <button type="button" class="btn btn-primary" (click)="submitted=false">Edit</button>
