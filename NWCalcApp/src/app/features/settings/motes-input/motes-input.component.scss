@@ -7,7 +7,9 @@
 }
 .motes-card-container {
   // height: calc(100% - 2*var(--content-padding-for-router-outlets) - var(--main-toolbar-height));
-  min-width: 45%;
+  // min-width: 45%;
+  min-width: 250px;
+  width: 14%;
   // height: 95%;
   margin: 5px;
   box-shadow: 2px;
@@ -22,17 +24,30 @@
   display: flex;
 }
 
-.motes-img-container {
+.motes-card-formular {
   flex: 1;
-  background-size: 100% 100%;
-  border-radius: 50%;
 }
 
-.motes-img {
+.motes-card-img {
   // height: 60px;
   // width: 60px;
   background-size: 100% 100%;
   border-radius: 50%;
+}
+
+.motes-card-header {
+  display: flex;
+}
+
+.motes-card-subtitle{
+  display: flex;
+}
+.motes-card-subtitle:first-child {
+  flex: 1;
+}
+
+:host ::ng-deep .mat-card-header-text {
+  width: 100%;
 }
 
 // @-webkit-keyframes rainbow {

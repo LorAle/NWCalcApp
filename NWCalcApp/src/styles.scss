@@ -7,4 +7,9 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   --content-padding-for-router-outlets: 5px;
   --toolbar-height: 64px;
   --footer-height: 40px;
+
+  .flexgrow {
+    display: flex;
+    flex: 1;
+  }
 }

@@ -1,87 +1,65 @@
 <div class="motes-form-container">
-  <div [hidden]="submitted">
-    <form (ngSubmit)="onSubmit()" #heroForm="ngForm">
-      <!-- <div class="form-group">
-        <label class="form-label" for="name">Name</label>
-        <input type="text" class="form-control" id="name" disabled="true"
-               required
-               [(ngModel)]="model.name" name="name"
-               #name="ngModel">
-      </div> -->
+  <form (ngSubmit)="onSubmit()" #heroForm="ngForm">
+    <!-- <div class="form-group">
+      <label class="form-label" for="name">Name</label>
+      <input type="text" class="form-control" id="name" disabled="true"
+             required
+             [(ngModel)]="model.name" name="name"
+             #name="ngModel">
+    </div> -->
 
-      <div class="form-group">
-        <label class="form-label" for="itemType">Item Type</label>
-        <select class="form-control" id="itemType"
-                required
-                [(ngModel)]="model.itemType" name="itemType"
-                #itemType="ngModel">
-          <option *ngFor="let itemType of itemTypes" [value]="itemType">{{itemType}}</option>
-        </select>
-        <div [hidden]="itemType.valid || itemType.pristine" class="alert alert-danger">
-          Itemtype is required
-        </div>
+    <!-- <div class="form-group">
+      <label class="form-label" for="itemType">Item Type</label>
+      <select class="form-control" id="itemType"
+              required
+              [(ngModel)]="model.itemType" name="itemType"
+              #itemType="ngModel">
+        <option *ngFor="let itemType of itemTypes" [value]="itemType">{{itemType}}</option>
+      </select>
+      <div [hidden]="itemType.valid || itemType.pristine" class="alert alert-danger">
+        Itemtype is required
       </div>
-      <div class="form-group">
-        <label class="form-label" for="moteType">Motetype</label>
-        <select class="form-control" id="moteType"
-                required
-                [(ngModel)]="model.moteType" name="moteType"
-                #type="ngModel">
-          <option *ngFor="let moteType of moteTypes" [value]="moteType">{{moteType}}</option>
-        </select>
-        <div [hidden]="type.valid || type.pristine" class="alert alert-danger">
-          Motetype is required
-        </div>
+    </div>
+    <div class="form-group">
+      <label class="form-label" for="moteType">Motetype</label>
+      <select class="form-control" id="moteType"
+              required
+              [(ngModel)]="model.moteType" name="moteType"
+              #type="ngModel">
+        <option *ngFor="let moteType of moteTypes" [value]="moteType">{{moteType}}</option>
+      </select>
+      <div [hidden]="type.valid || type.pristine" class="alert alert-danger">
+        Motetype is required
       </div>
+    </div> -->
 
-      <div class="form-group">
-        <label class="form-label" for="mps">Min Price Sell</label>
-        <input type="text" class="form-control" id="mps"
-               required
-               [(ngModel)]="model.minSellOrder" name="mps"
-               #mps="ngModel">
-        <div [hidden]="mps.valid || mps.pristine"
-             class="alert alert-danger">
-            Min Price Sell is required
-        </div>
+    <div class="form-group">
+      <label class="form-label" for="mps">Min Price Sell</label>
+      <input type="text" class="form-control" id="mps"
+             required
+             [(ngModel)]="model.minSellOrder" name="mps"
+             (keyup)="onSubmit()"
+             #mps="ngModel">
+      <div [hidden]="mps.valid || mps.pristine"
+           class="alert alert-danger">
+          Min Price Sell is required
       </div>
+    </div>
 
-      <div class="form-group">
-        <label class="form-label" for="mpb">Max Price Buy</label>
-        <input type="text" class="form-control" id="mpb"
-               required
-               [(ngModel)]="model.maxBuyOrder" name="mpb"
-               #mpb="ngModel">
-        <div [hidden]="mpb.valid || mpb.pristine"
-             class="alert alert-danger">
-            Max Price Buy is required
-        </div>
+    <div class="form-group">
+      <label class="form-label" for="mpb">Max Price Buy</label>
+      <input type="text" class="form-control" id="mpb"
+             required
+             [(ngModel)]="model.maxBuyOrder" name="mpb"
+             (keyup)="onSubmit()"
+             #mpb="ngModel">
+      <div [hidden]="mpb.valid || mpb.pristine"
+           class="alert alert-danger">
+          Max Price Buy is required
       </div>
+    </div>
 
-      <button type="submit" class="btn btn-success" [disabled]="!heroForm.form.valid">Submit</button>
-      <button type="button" class="btn btn-default" (click)="reset(); heroForm.reset()">Reset</button>
-    </form>
-  </div>
-
-  <div [hidden]="!submitted">
-    <h2>You submitted the following:</h2>
-    <div class="row">
-      <div class="col-xs-3">Name</div>
-      <div class="col-xs-9">{{ model.name }}</div>
-    </div>
-    <div class="row">
-      <div class="col-xs-3">Type</div>
-      <div class="col-xs-9">{{ model.moteType }}</div>
-    </div>
-    <div class="row">
-      <div class="col-xs-3">Min Price Sell</div>
-      <div class="col-xs-9">{{ model.minSellOrder }}</div>
-    </div>
-    <div class="row">
-      <div class="col-xs-3">Max Price Buy</div>
-      <div class="col-xs-9">{{ model.maxBuyOrder }}</div>
-    </div>
-    <br>
-    <button type="button" class="btn btn-primary" (click)="submitted=false">Edit</button>
-  </div>
+    <!-- <button type="submit" class="btn btn-success" [disabled]="!heroForm.form.valid">Submit</button>
+    <button type="button" class="btn btn-default" (click)="reset(); heroForm.reset()">Reset</button> -->
+  </form>
 </div>

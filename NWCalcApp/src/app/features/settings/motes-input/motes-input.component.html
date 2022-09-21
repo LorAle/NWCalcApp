@@ -1,12 +1,15 @@
 <div class="motes-input-container">
   <mat-card class="motes-card-container" *ngFor="let mote of motes; let i = index">
-    <mat-card-header>
-      <div mat-card-avatar class="motes-img" [ngStyle]="{'background-image': mote.imageURL}"></div>
-      <mat-card-title>{{mote.name}}</mat-card-title>
-      <mat-card-subtitle>Price Data</mat-card-subtitle>
+    <mat-card-header class="motes-card-header">
+      <div mat-card-avatar class="motes-card-img" [ngStyle]="{'background-image': mote.imageURL}"></div>
+      <mat-card-title class="motes-card-title">{{mote.name}}</mat-card-title>
+      <mat-card-subtitle class="motes-card-subtitle">
+        <span class="flexgrow">Tier: {{mote.moteTier}}</span>
+        <span>{{GetNameForItem(mote.itemType)}}</span>
+      </mat-card-subtitle>
     </mat-card-header>
     <mat-card-content class="motes-card-content">
-      <nwcalc-motes-formular [(moteModel)]="motes[i]"></nwcalc-motes-formular>
+      <nwcalc-motes-formular class="motes-card-formular" [moteModel]="motes[i]" (moteModelChange)="SaveData($event)"></nwcalc-motes-formular>
     </mat-card-content>
     <!-- <mat-divider inset></mat-divider> -->
     <!-- <mat-card-actions>

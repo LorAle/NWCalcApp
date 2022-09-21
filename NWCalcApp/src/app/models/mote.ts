@@ -13,7 +13,7 @@ export enum MoteType {
   Water,
 }
 
-export class Mote implements Item{
+export class Mote implements Item {
 
   public static MoteTypesMap: Map<MoteType, string> = Mote.GetMoteTypesMap();
   name: string;
@@ -28,12 +28,30 @@ export class Mote implements Item{
     public moteType: MoteType = MoteType.Air,
   ) {
     this.itemType = moteTier == 2 ? ItemType.Ressource : ItemType.Refined;
-    this.name = Mote.GetNameForMoteType(moteType);
+    this.name = Mote.GetNameForMoteType(moteType, moteTier);
     this.imageURL = Mote.GetImagePathForMoteType(moteType);
   }
 
-  static GetNameForMoteType(moteType: MoteType): string {
-    return Mote.MoteTypesMap.get(moteType) == undefined ? '' : Mote.MoteTypesMap.get(moteType) as string;
+  static GetNameForMoteType(moteType: MoteType, tier?: MoteTier): string {
+    var resp = Mote.MoteTypesMap.get(moteType) == undefined ? '' : Mote.MoteTypesMap.get(moteType) as string;
+
+    switch (tier) {
+      case 3:
+        resp += " Wasp";
+        break;
+      case 4:
+        resp += " Essence";
+        break;
+      case 5:
+        resp += " Quintessence";
+        break;
+      case 2:
+      default:
+        resp += " Mote";
+        break;
+    }
+
+    return resp;
   }
 
   static GetMoteTypesMap(): Map<MoteType, string> {
@@ -73,12 +91,4 @@ export class Mote implements Item{
     }
     return resp;
   }
-}
-
-export class MoteCalc {
-
-  static CalcMoteCraftPrice() {
-
-  }
-
 }

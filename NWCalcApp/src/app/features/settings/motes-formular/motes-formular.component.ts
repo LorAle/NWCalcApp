@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output, SimpleChanges } from '@angular/core';
 import { GetItemTypesMap, ItemType } from 'src/app/models/item';
 import { Mote, MoteType } from '../../../models/mote';
 
@@ -23,6 +23,7 @@ export class MotesFormularComponent implements OnInit {
 
   onSubmit() {
     this.submitted = true;
+    console.log("sugmi");
     this.moteModelChange.emit(this.model);
   }
 
