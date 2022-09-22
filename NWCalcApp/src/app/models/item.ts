@@ -5,7 +5,7 @@ export enum ItemType {
 }
 
 export function GetItemTypesMap(): Map<ItemType, string> {
-  return new Map<ItemType, string>([[ItemType.Ressource, 'Refined'], [ItemType.Refined, 'Refined']]);
+  return new Map<ItemType, string>([[ItemType.Ressource, 'Ressource'], [ItemType.Refined, 'Refined']]);
 }
 
 export interface Item {
@@ -14,4 +14,15 @@ export interface Item {
   minSellOrder: number;
   name: string;
   itemType: ItemType;
+}
+
+export function GetItemTypeName(itemType: ItemType): string {
+  switch (itemType) {
+    case ItemType.Ressource:
+      return "Ressource";
+    case ItemType.Refined:
+      return "Ressource";
+    default:
+      return "";
+  }
 }
