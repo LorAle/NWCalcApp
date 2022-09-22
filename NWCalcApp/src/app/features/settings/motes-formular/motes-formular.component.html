@@ -40,10 +40,6 @@
              [(ngModel)]="model.minSellOrder" name="mps"
              (keyup)="onSubmit()"
              #mps="ngModel">
-      <div [hidden]="mps.valid || mps.pristine"
-           class="alert alert-danger">
-          Min Price Sell is required
-      </div>
     </div>
 
     <div class="form-group">
@@ -53,10 +49,6 @@
              [(ngModel)]="model.maxBuyOrder" name="mpb"
              (keyup)="onSubmit()"
              #mpb="ngModel">
-      <div [hidden]="mpb.valid || mpb.pristine"
-           class="alert alert-danger">
-          Max Price Buy is required
-      </div>
     </div>
 
     <!-- <button type="submit" class="btn btn-success" [disabled]="!heroForm.form.valid">Submit</button>

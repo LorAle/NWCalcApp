@@ -1,3 +1,4 @@
+import { STRING_TYPE } from '@angular/compiler';
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output, SimpleChanges } from '@angular/core';
 import { GetItemTypesMap, ItemType } from 'src/app/models/item';
 import { Mote, MoteType } from '../../../models/mote';
@@ -23,7 +24,9 @@ export class MotesFormularComponent implements OnInit {
 
   onSubmit() {
     this.submitted = true;
-    console.log("sugmi");
+    // Only Points allowed for default
+    this.model.minSellOrder = parseFloat(this.model.minSellOrder.toString().replace(',', '.'))
+    this.model.maxBuyOrder = parseFloat(this.model.maxBuyOrder.toString().replace(',', '.'))
     this.moteModelChange.emit(this.model);
   }
 

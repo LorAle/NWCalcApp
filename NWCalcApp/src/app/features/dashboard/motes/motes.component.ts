@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { MoteService } from 'src/app/core/services/Calc/mote.service';
+import { MoteService, MoteTableRow } from 'src/app/core/services/Calc/mote.service';
 
 export interface PeriodicElement {
   name: string;
@@ -29,15 +29,24 @@ const ELEMENT_DATA: PeriodicElement[] = [
 })
 export class MotesComponent implements OnInit {
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
+  craftingPricesColumns: string[] = [];
+  craftingTableData: MoteTableRow[] = [];
+
   dataSource = ELEMENT_DATA;
 
   constructor(
     moteService: MoteService
   ) {
-    moteService.GetCraftingPricesTableData();
+    this.craftingTableData = moteService.GetCraftingPricesTableData();
+    this.craftingPricesColumns = Object.getOwnPropertyNames(this.craftingTableData[0]);
   }
 
   ngOnInit(): void {
+  }
+
+  public GetColumnName(name: string): string
+  {
+    return name[0].toUpperCase() + name.substring(1);
   }
 
 }

@@ -6,13 +6,15 @@ import { SettingsComponent } from './settings.component';
 import { MotesInputComponent } from './motes-input/motes-input.component';
 import { CoreModule } from 'src/app/core/core.module';
 import { MotesFormularComponent } from './motes-formular/motes-formular.component';
+import { TaxesInputComponent } from './taxes-input/taxes-input.component';
 
 
 @NgModule({
   declarations: [
     SettingsComponent,
     MotesInputComponent,
-    MotesFormularComponent
+    MotesFormularComponent,
+    TaxesInputComponent
   ],
   imports: [
     CommonModule,

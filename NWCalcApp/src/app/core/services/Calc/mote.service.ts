@@ -35,10 +35,10 @@ export class MoteService {
       foundMotePrice = motes.find(m => m.moteType === moteType[0] && m.moteTier === 5)?.minSellOrder ?? 0;
       moteHlp.tierFiveValue = (moteHlp.tierFourValue > foundMotePrice ? foundMotePrice : moteHlp.tierFourValue) * 3
 
-      moteHlp.tierTwoValue    *= taxes;
-      moteHlp.tierThreeValue  *= taxes;
-      moteHlp.tierFourValue   *= taxes;
-      moteHlp.tierFiveValue   *= taxes;
+      moteHlp.tierTwoValue    = parseFloat((moteHlp.tierTwoValue*taxes)   .toFixed(3));
+      moteHlp.tierThreeValue  = parseFloat((moteHlp.tierThreeValue*taxes) .toFixed(3));
+      moteHlp.tierFourValue   = parseFloat((moteHlp.tierFourValue*taxes)  .toFixed(3));
+      moteHlp.tierFiveValue   = parseFloat((moteHlp.tierFiveValue*taxes)  .toFixed(3));
 
       resp.push(moteHlp);
     }
